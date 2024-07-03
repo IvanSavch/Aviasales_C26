@@ -7,11 +7,12 @@
 <body>
 <form th:action="@{/ticketReservation}" method="post">
     <input type="text" placeholder="whence" name="origin">
-    <input type="text" placeholder="departureDate" name="departureDate">
+    <input type="text" placeholder="whither yyyy-mm-dd" name="departureDate">
+    <input type="text" placeholder="destination" name="destination">
     <button>submit</button>
 </form>
 <ul>
-    <li th:each="fly:${flightDestinations}" th:text="${fly}">
+    <li th:each="fly:${flight}" th:text="${fly}">
     </li>
 </ul>
 </body>

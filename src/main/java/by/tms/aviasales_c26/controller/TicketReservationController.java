@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -25,9 +26,15 @@ public class TicketReservationController {
     }
 
     @PostMapping
-    public String ticketReservation(String origin, String departureDate, Model model) throws ResponseException {
+    public String ticketReservation(String origin, String destination, String departureDate, Model model) throws ResponseException {
             List<AirportFlight> flightDestinations = flightDestinationService.getFlightDestinations(origin, departureDate);
-           model.addAttribute("flightDestinations", flightDestinations);
+            List<AirportFlight> flight = new ArrayList<>();
+            for (AirportFlight flightDestination : flightDestinations) {
+                if (flightDestination.getDestination().equals(destination)) {
+                    flight.add(flightDestination);
+                }
+            }
+           model.addAttribute("flight", flight);
         return "/ticket_reservation";
     }
 }
