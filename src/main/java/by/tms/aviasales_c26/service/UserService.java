@@ -3,25 +3,29 @@ package by.tms.aviasales_c26.service;
 import by.tms.aviasales_c26.entity.User;
 import by.tms.aviasales_c26.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+
 
 @Service
-public class UserService {
+public class UserService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+         return userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException(username));
+    }
+
+
     public void save(User user) {
+
         userRepository.save(user);
     }
 
-    public User findById(int id) {
-        return userRepository.findById(id).orElseThrow();
-    }
 
-    public User finByUsername(String username) {
-        Optional<User> user = userRepository.findByUserName(username);
-        return user.orElseThrow();
-    }
 }

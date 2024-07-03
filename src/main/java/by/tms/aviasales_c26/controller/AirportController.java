@@ -8,20 +8,25 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@RequestMapping("/airport")
 @Controller
-public class RegistrationController {
-
+@RequestMapping("/airport")
+public class AirportController {
     @Autowired
-   private UserService userService;
+    private UserService userService;
+
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
 
     @GetMapping("/registration")
     public String registration() {
         return "registration";
     }
+
     @PostMapping("/registration")
     public String registration(User user) {
         userService.save(user);
-        return "home";
+        return "redirect:/login";
     }
 }
