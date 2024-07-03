@@ -24,17 +24,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .disable()
                 .authorizeRequests()
                 //Доступ только для не зарегистрированных пользователей
-                .antMatchers("/airport/registration").not().fullyAuthenticated()
+                .antMatchers("/","/registration").not().fullyAuthenticated()
                 //Доступ разрешен всем пользователей
-                .antMatchers("/airport","/searchTicket","/buy").permitAll()
+                .antMatchers("/").permitAll()
                 //Все остальные страницы требуют аутентификации
                 .anyRequest().authenticated()
                 .and()
                 //Настройка для входа в систему
                 .formLogin()
-                .loginPage("/airport/login")
+                .loginPage("/login")
                 //Перенарпавление на главную страницу после успешного входа
-                .defaultSuccessUrl("/airport")
+                .defaultSuccessUrl("/").failureUrl("/login?error=true")
                 .permitAll()
                 .and()
                 .logout()

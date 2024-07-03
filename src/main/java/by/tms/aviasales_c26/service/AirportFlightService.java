@@ -1,6 +1,6 @@
 package by.tms.aviasales_c26.service;
 
-import by.tms.aviasales_c26.constant.AirportConstants;
+import by.tms.aviasales_c26.cosnstant.AirportConst;
 import by.tms.aviasales_c26.model.AirportFlight;
 import com.amadeus.Amadeus;
 import com.amadeus.Params;
@@ -15,10 +15,10 @@ import java.util.List;
 
 @Service
 public class AirportFlightService {
+@Autowired
+private AirportConst airportConst;
 
-
-
-    private final Amadeus amadeus = Amadeus.builder(AirportConstants.Client_id, AirportConstants.Client_key).build();
+    private final Amadeus amadeus = Amadeus.builder(airportConst.getClient_id(), airportConst.getClient_secret()).build();
 
     public List<AirportFlight> getFlightDestinations(String origin, String departureDate) throws ResponseException {
         List<AirportFlight> flights = new ArrayList<>();

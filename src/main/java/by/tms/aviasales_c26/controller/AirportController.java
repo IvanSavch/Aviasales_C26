@@ -9,10 +9,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/airport")
+@RequestMapping("/")
 public class AirportController {
     @Autowired
     private UserService userService;
+
+    @GetMapping
+    public String home() {
+        return "home";
+    }
 
     @GetMapping("/login")
     public String login() {
