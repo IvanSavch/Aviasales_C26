@@ -27,14 +27,18 @@ public class TicketReservationController {
 
     @PostMapping
     public String ticketReservation(String origin, String destination, String departureDate, Model model) throws ResponseException {
-            List<AirportFlight> flightDestinations = flightDestinationService.getFlightDestinations(origin, departureDate);
-            List<AirportFlight> flight = new ArrayList<>();
-            for (AirportFlight flightDestination : flightDestinations) {
-                if (flightDestination.getDestination().equals(destination)) {
-                    flight.add(flightDestination);
-                }
+        List<AirportFlight> flightDestinations = flightDestinationService.getFlightDestinations(origin, departureDate);
+        List<AirportFlight> flight = new ArrayList<>();
+        for (AirportFlight flightDestination : flightDestinations) {
+            if (flightDestination.getDestination().equals(destination)) {
+                flight.add(flightDestination);
             }
-           model.addAttribute("flight", flight);
+        }
+        if (flight.isEmpty()) {
+            return "redirect:/ticketReservationError";
+        }
+
+        model.addAttribute("flight", flight);
         return "/ticket_reservation";
     }
 }

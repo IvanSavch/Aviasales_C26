@@ -26,7 +26,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 //Доступ только для не зарегистрированных пользователей
                 .antMatchers("/airport/registration").not().fullyAuthenticated()
                 //Доступ разрешен всем пользователей
-                .antMatchers("/airport","/ticketReservation","/airportTickets").permitAll()
+                .antMatchers("/airport").permitAll()
                 //Все остальные страницы требуют аутентификации
                 .anyRequest().authenticated()
                 .and()
@@ -44,6 +44,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
     protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userService);
+        auth.userDetailsService(userService).passwordEncoder(new BCryptPasswordEncoder(11));
     }
 }

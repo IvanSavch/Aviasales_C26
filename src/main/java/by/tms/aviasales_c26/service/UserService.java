@@ -23,7 +23,7 @@ public class UserService implements UserDetailsService {
 
 
     public void save(User user) {
-
+        user.setPassword(new BCryptPasswordEncoder(11).encode(user.getPassword()));
         userRepository.save(user);
     }
 

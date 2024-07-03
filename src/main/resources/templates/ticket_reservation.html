@@ -11,9 +11,10 @@
     <input type="text" placeholder="destination" name="destination">
     <button>submit</button>
 </form>
-<ul>
-    <li th:each="fly:${flight}" th:text="${fly}">
-    </li>
-</ul>
+
+    <ul>
+        <li th:each="fly:${flight}" th:text="${fly}">
+        </li>
+    </ul>
 </body>
 </html>
