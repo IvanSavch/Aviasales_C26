@@ -1,7 +1,7 @@
 package by.tms.aviasales_c26.service;
 
 import by.tms.aviasales_c26.constant.AirportConstants;
-import by.tms.aviasales_c26.entity.AirportFlight;
+import by.tms.aviasales_c26.model.AirportFlight;
 import com.amadeus.Amadeus;
 import com.amadeus.Params;
 import com.amadeus.exceptions.ResponseException;

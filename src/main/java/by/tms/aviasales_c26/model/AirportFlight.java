@@ -1,4 +1,4 @@
-package by.tms.aviasales_c26.entity;
+package by.tms.aviasales_c26.model;
 
 import lombok.Data;
 
@@ -6,7 +6,6 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Data
-
 @Table(name = "Airport_Flight")
 
 public class AirportFlight {

@@ -1,6 +1,6 @@
 package by.tms.aviasales_c26.controller;
 
-import by.tms.aviasales_c26.entity.AirportFlight;
+import by.tms.aviasales_c26.model.AirportFlight;
 import by.tms.aviasales_c26.service.FlightDestinationService;
 import com.amadeus.exceptions.ResponseException;
 import org.springframework.beans.factory.annotation.Autowired;
