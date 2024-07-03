@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/ticketReservationError")
-public class TicketReservationError {
+@RequestMapping("/searchTicketError")
+public class SearchTicketErrorController {
     @GetMapping
-    public String ticketReservationError(Model model) {
+    public String searchTicketError(Model model) {
         model.addAttribute("nonFlights", "no flights found");
-        return "ticketReservationError";
+        return "searchTicketError";
     }
 }

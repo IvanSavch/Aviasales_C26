@@ -6,16 +6,13 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Data
-@Table(name = "Airport_Flight")
-
 public class AirportFlight {
+    private  String origin;
+    private  String destination;
+    private  Date departureDate;
+    private  Date returnDate;
+    private  Double price;
 
-
-    private final String origin;
-    private final String destination;
-    private final Date departureDate;
-    private final Date returnDate;
-    private final Double price;
 
     public AirportFlight(String origin, String destination, Date departureDate, Date returnDate, Double price) {
         this.origin = origin;
@@ -24,6 +21,7 @@ public class AirportFlight {
         this.returnDate = returnDate;
         this.price = price;
     }
+
 
     @Override
     public String toString() {

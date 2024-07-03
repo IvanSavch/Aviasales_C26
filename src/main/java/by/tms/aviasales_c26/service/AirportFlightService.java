@@ -7,18 +7,20 @@ import com.amadeus.Params;
 import com.amadeus.exceptions.ResponseException;
 import com.amadeus.resources.FlightDestination;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class FlightDestinationService {
+public class AirportFlightService {
+
+
 
     private final Amadeus amadeus = Amadeus.builder(AirportConstants.Client_id, AirportConstants.Client_key).build();
 
     public List<AirportFlight> getFlightDestinations(String origin, String departureDate) throws ResponseException {
-
         List<AirportFlight> flights = new ArrayList<>();
         Params params = Params.with("origin", origin).and("departureDate", departureDate);
         FlightDestination[] flightDestinations = amadeus.shopping.flightDestinations.get(params);
@@ -31,4 +33,5 @@ public class FlightDestinationService {
         }
         return flights;
     }
+
 }

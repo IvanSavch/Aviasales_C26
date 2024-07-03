@@ -5,15 +5,19 @@
     <title>Ticket reservation</title>
 </head>
 <body>
-<form th:action="@{/ticketReservation}" method="post">
+<form th:action="@{/searchTicket}" method="post">
     <input type="text" placeholder="whence" name="origin">
     <input type="text" placeholder="whither yyyy-mm-dd" name="departureDate">
     <input type="text" placeholder="destination" name="destination">
     <button>submit</button>
 </form>
-
     <ul>
-        <li th:each="fly:${flight}" th:text="${fly}">
+        <li th:each="fly:${flight}" >
+            <form th:action="@{/buy}" method="post">
+                <input type="hidden" th:value="${fly}" name="fli">
+                <button><th:block th:text="${fly}">
+                </th:block> </button>
+            </form>
         </li>
     </ul>
 </body>

@@ -26,7 +26,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 //Доступ только для не зарегистрированных пользователей
                 .antMatchers("/airport/registration").not().fullyAuthenticated()
                 //Доступ разрешен всем пользователей
-                .antMatchers("/airport").permitAll()
+                .antMatchers("/airport","/searchTicket","/buy").permitAll()
                 //Все остальные страницы требуют аутентификации
                 .anyRequest().authenticated()
                 .and()
